@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Archivo de Audio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #f8f8f8;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #007BFF;
+            padding: 0 20px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        .navbar a:hover {
+            color: #0056b3;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .photos-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .photo {
+            flex: 0 0 30%;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .photo img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .photo h2 {
+            margin: 0;
+            color: #007BFF;
+            font-size: 18px;
+            text-align: center;
+        }
+        .author-info {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="static/imagenes_especies/Reconocimiento_fotos.txt">Reconocimiento de las fotos utilizadas en los resultados</a>
+        <a href="static/datos/Reconocimiento_pruebas_finales.txt">Reconocimiento de los datos utilizados para crear el modelo de clasificación</a>
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <h1 style="color: #007BFF;">Clasificador de Pájaros según su canto</h1>
+            <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <input type="file" name="file" id="fileInput">
+                <br>
+                <input type="submit" value="Clasificar">
+            </form>
+        </div>
+    </div>
+    <div class="photos-container">
+        <div class="photo">
+            <img src="static/Agradecimientos/Esii.jfif" alt="Imagen 1">
+            <h2>Especial gracias a: Escuela Superior de Informática de Albacete</h2>
+        </div>
+        <div class="photo">
+            <img src="static/Agradecimientos/SAO.jfif" alt="Imagen 2">
+            <h2>Especial gracias a: Sociedad Albacetense de Ornitología</h2>
+        </div>
+        <div class="photo">
+            <img src="static/Agradecimientos/Xeno-canto.png" alt="Imagen 3">
+            <h2>Especial gracias a: Xeno-canto</h2>
+        </div>
+    </div>
+    <div class="author-info">
+        <p>Página creada por Javier Senabre Urrea para el Trabajo Fin de Grado</p>
+    </div>
+
+    <script>
+        function validateForm() {
+            const fileInput = document.getElementById('fileInput');
+            if (!fileInput.value) {
+                alert('Por favor, sube un archivo antes de clasificar.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

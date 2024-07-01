@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizando la inferencia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5; /* Fondo blanco */
+            color: #333; /* Texto negro */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 5px solid transparent;
+            border-top-color: #333; /* Color del borde superior del spinner */
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-text {
+            font-size: 16px;
+            margin-top: 20px;
+            color: #333; /* Color del texto */
+        }
+    </style>
+</head>
+<body>
+    <div class="spinner"></div>
+    <div class="loading-text">Cargando...</div>
+    <script>
+        // Redireccionar a la URL especificada después de un tiempo de espera
+        setTimeout(function() {
+            window.location.href = '{{ redirect_url }}';
+        }, 2000); // Ajusta el tiempo de espera según sea necesario
+    </script>
+</body>
+</html>
+
+
+
+
+
